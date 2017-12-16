@@ -1,0 +1,124 @@
+<html>
+        <head>
+           <title>SEGMENTIFY SEGMENTATION</title>
+           <!-- Materail Theme Load -->
+           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+           <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+           <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+           <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+           
+        </head>
+        <body>
+           <!-- Uses a transparent header that draws on top of the layout's background -->
+           <style>
+              /*
+              .demo-layout-transparent {
+              background: url("https://media-exp2.licdn.com/media/AAEAAQAAAAAAAAdTAAAAJDk2NzQzNjYxLTU5NjktNDMxOC1iYmY2LTljM2YwNjI4MWRhMQ.png") center / cover;
+              }
+              */
+              .demo-layout-transparent .mdl-layout__header,
+              .demo-layout-transparent .mdl-layout__drawer-button {
+              /* This background is dark, so we set text to white. Use 87% black instead if
+              your background is light. */
+              color: rgb(0, 0, 0);
+              }
+              .mdl-navigation__link {
+              color: rgb(0, 0, 0);
+              }
+           </style>
+           <!-- Wide card with share menu button -->
+           <style>
+              .demo-card-wide.mdl-card {
+              width: 512px;
+              }
+              .demo-card-wide > .mdl-card__title {
+              color: #fff;
+              height: 176px;
+              background: url('https://www.segmentify.com/wp-content/uploads/2017/10/segmentify-logo.svg') center / cover;
+              }
+              .demo-card-wide > .mdl-card__menu {
+              color: #fff;
+              }
+              .demo-card-wide > .mdl-card__title {
+              color: rgb(224, 0, 0);
+              height: 176px;
+              background: url(https://www.segmentify.com/wp-content/uploads/2017/10/segmentify-logo.svg) center / cover;
+              background-size: auto;
+              background-repeat: no-repeat;
+              font-weight: bold;
+              }
+              .mdl-button.mdl-button--colored {
+                color: rgb(63,81,181);
+                color: #000;
+                font-weight: bold;
+                border: 1px solid #ccc;
+            }
+            .demo-card-wide > .mdl-card__title {
+                color: rgb(224, 0, 0);
+                height: 176px;
+                background: url(https://www.segmentify.com/wp-content/uploads/2017/10/segmentify-logo.svg) center / cover;
+                background-size: inherit;
+                background-repeat: no-repeat;
+                font-weight: bold;
+                margin: 17px;
+            
+            }
+            .demo-card-wide.mdl-card {
+                width: 512px;
+                margin-left: 36%;
+                margin-top: 10%;
+                text-align: center;
+            }
+           </style>
+           <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title">
+                 <h2 class="mdl-card__title-text"></h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                 <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <input class="mdl-textfield__input" type="text" id="username">
+                       <label class="mdl-textfield__label" for="sample1">Username</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <input class="mdl-textfield__input" type="text" id="password">
+                       <label class="mdl-textfield__label" for="sample1">Password</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <input class="mdl-textfield__input" type="text" id="switch">
+                       <label class="mdl-textfield__label" for="sample1">xSwitchUser</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <input class="mdl-textfield__input" type="text" id="segment">
+                       <label class="mdl-textfield__label" for="sample1">Segment Name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <input class="mdl-textfield__input" type="text" id="apikey">
+                       <label class="mdl-textfield__label" for="sample1">apiKey</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                       <textarea class="mdl-textfield__input" type="text" rows= "10" id="userlist" ></textarea>
+                       <label class="mdl-textfield__label" for="sample5">User Ids. (Example : "User1","User2")</label>
+                    </div>
+                 </form>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="sendbtn">
+                 SEND
+                 </a>
+              </div>
+              <div class="mdl-card__menu">
+                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                 <i class="material-icons"></i>
+                 </button>
+              </div>
+           </div>
+        </body>
+     </html>
+     <script>
+     jQuery("#sendbtn").click(function() {
+        jQuery.get("//localhost:3000/api/setSegment"+"?username="+jQuery("#username").val()+"&password="+jQuery("#password").val()+"&switch="+jQuery("#switch").val()+"&userlist="+jQuery("#userlist").val()+"&apikey="+jQuery("#apikey").val()+"&segment="+jQuery("#segment").val(),function(data) {
+            alert(JSON.stringify(data));
+        });
+     });
+     </script>
