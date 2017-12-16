@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express();
 var path = require('path')
-app.use(express.static(__dirname + '/'));
+//app.use(express.static(__dirname + '/'));
 /**
  * @parameter segmentName
  * @parameter x_switch_user
@@ -57,6 +57,6 @@ app.get('/api/setSegment',function(req,res) {
     }
    
 });
-app.listen(8080, function () {
+app.listen(3000, function () {
     console.log('Example app listening on port 2016!');
   });
